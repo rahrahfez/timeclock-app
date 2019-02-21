@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TimeClockAPI.Data;
 
 namespace TimeCLockAPI.Controllers
 {
@@ -10,6 +11,12 @@ namespace TimeCLockAPI.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly DataContext _context;
+        public ValuesController(DataContext context)
+        {
+            _context = context;
+
+        }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
