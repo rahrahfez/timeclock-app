@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-4 d-block">
-      <p>{{ currentTime | async | date: 'fullDate' }}</p>
+    <div class="col-sm-4">
+      <p id="date">{{ currentTime | async | date: 'fullDate' }}</p>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-8" id="time">
       <p>{{ currentTime | async | date: 'shortTime' }}</p>
     </div>
   </div>

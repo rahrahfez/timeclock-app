@@ -18,6 +18,7 @@ namespace TimeClockAPI.Controllers
             _context = context;
 
         }
+        // GET api/users
         [HttpGet]
         public IActionResult GetValues()
         {
