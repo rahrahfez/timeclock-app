@@ -12,3 +12,17 @@
 /home/david/Documents/Projects/TimeClockApp/TimeClockAPI/obj/Debug/netcoreapp2.2/TimeCLockAPI.RazorTargetAssemblyInfo.cache
 /home/david/Documents/Projects/TimeClockApp/TimeClockAPI/obj/Debug/netcoreapp2.2/TimeCLockAPI.dll
 /home/david/Documents/Projects/TimeClockApp/TimeClockAPI/obj/Debug/netcoreapp2.2/TimeCLockAPI.pdb
+/home/david-lenovo/Documents/Projects/timeclock-app/TimeClockAPI/bin/Debug/netcoreapp2.2/TimeCLockAPI.deps.json
+/home/david-lenovo/Documents/Projects/timeclock-app/TimeClockAPI/bin/Debug/netcoreapp2.2/TimeCLockAPI.runtimeconfig.json
+/home/david-lenovo/Documents/Projects/timeclock-app/TimeClockAPI/bin/Debug/netcoreapp2.2/TimeCLockAPI.runtimeconfig.dev.json
+/home/david-lenovo/Documents/Projects/timeclock-app/TimeClockAPI/bin/Debug/netcoreapp2.2/TimeCLockAPI.dll
+/home/david-lenovo/Documents/Projects/timeclock-app/TimeClockAPI/bin/Debug/netcoreapp2.2/TimeCLockAPI.pdb
+/home/david-lenovo/Documents/Projects/timeclock-app/TimeClockAPI/obj/Debug/netcoreapp2.2/TimeCLockAPI.csprojAssemblyReference.cache
+/home/david-lenovo/Documents/Projects/timeclock-app/TimeClockAPI/obj/Debug/netcoreapp2.2/TimeCLockAPI.csproj.CoreCompileInputs.cache
+/home/david-lenovo/Documents/Projects/timeclock-app/TimeClockAPI/obj/Debug/netcoreapp2.2/TimeCLockAPI.RazorAssemblyInfo.cache
+/home/david-lenovo/Documents/Projects/timeclock-app/TimeClockAPI/obj/Debug/netcoreapp2.2/TimeCLockAPI.RazorAssemblyInfo.cs
+/home/david-lenovo/Documents/Projects/timeclock-app/TimeClockAPI/obj/Debug/netcoreapp2.2/TimeCLockAPI.AssemblyInfoInputs.cache
+/home/david-lenovo/Documents/Projects/timeclock-app/TimeClockAPI/obj/Debug/netcoreapp2.2/TimeCLockAPI.AssemblyInfo.cs
+/home/david-lenovo/Documents/Projects/timeclock-app/TimeClockAPI/obj/Debug/netcoreapp2.2/TimeCLockAPI.RazorTargetAssemblyInfo.cache
+/home/david-lenovo/Documents/Projects/timeclock-app/TimeClockAPI/obj/Debug/netcoreapp2.2/TimeCLockAPI.dll
+/home/david-lenovo/Documents/Projects/timeclock-app/TimeClockAPI/obj/Debug/netcoreapp2.2/TimeCLockAPI.pdb
