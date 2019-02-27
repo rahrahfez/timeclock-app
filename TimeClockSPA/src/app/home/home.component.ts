@@ -11,13 +11,4 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  onClockIn() {
-
-  }
-
-  onClockOut() {
-    
-  }
-
 }
