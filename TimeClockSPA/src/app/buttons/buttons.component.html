@@ -1,15 +1,21 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
-      <a (click)="onClockIn()"><img id="app-button" src="assets/019-time-1.png" alt="Clock In"></a>
-      <a><img id="app-button" src="assets/fork.png" alt="Meal Start"></a>
-      <a><img src="assets/settings.png" id="app-button" alt="Admin"></a>
+    <div class="col-4">
+      <button type="submit"><a (click)="onClockIn()"><img id="app-button" src="assets/019-time-1.png" alt="Clock In"></a></button>
+    </div>
+    <div class="col-4">
+      <button type="submit"><a><img id="app-button" src="assets/fork.png" alt="Meal Start"></a></button>
+    </div>
+    <div class="col-4">
+      <button type="submit"><a><img src="assets/settings.png" id="app-button" alt="Admin"></a></button>
     </div>
   </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <a (click)="onClockOut()"><img id="app-button" src="assets/020-clock-1.png" alt="Clock Out"></a>
-        <a><img id="app-button" src="assets/cutlery.png" alt="Meal End"></a>
+    <div class="row mt-5">
+      <div class="col-4">
+        <button mat-stroked-button aria-label="Clock Out" type="submit"><a (click)="onClockOut()"><img id="app-button" src="assets/020-clock-1.png"></a></button>
+      </div>
+      <div class="col-4">
+        <button type="submit"><a><img id="app-button" src="assets/cutlery.png" alt="Meal End"></a></button>
       <!-- <a><img src="assets/settings-gears.png" id="app-button" alt="Settings"></a> -->  
       </div>
     </div>

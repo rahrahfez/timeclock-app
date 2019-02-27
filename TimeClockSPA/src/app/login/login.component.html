@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="loginForm">
+        <mat-form-field>
+          <input class="inputForm" type="text" matInput formControlName="userId" placeholder="User ID">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input class="inputForm" type="text" matInput formControlName="userPw" placeholder="Password">
+        </mat-form-field>
+      </form>
+      <button mat-raised-button color="accent"><a (click)="onSubmit()">Submit</a></button>
+    </div>
+  </div>
+</div>
