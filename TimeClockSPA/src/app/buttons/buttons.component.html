@@ -1,23 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
-      <button type="submit"><a (click)="onClockIn()"><img id="app-button" src="assets/019-time-1.png" alt="Clock In"></a></button>
-    </div>
-    <div class="col-4">
-      <button type="submit"><a><img id="app-button" src="assets/fork.png" alt="Meal Start"></a></button>
-    </div>
-    <div class="col-4">
-      <button type="submit"><a><img src="assets/settings.png" id="app-button" alt="Admin"></a></button>
-    </div>
+      <button id="app-button" type="button" (click)="onClick()" color="accent" mat-raised-button>Clock In</button>
+      <button id="app-button" type="button" (click)="onClick()" color="accent" mat-raised-button>Clock Out</button>
+      <button id="app-button" type="button" (click)="onClick()" color="accent" mat-raised-button>Meal In</button>
+      <button id="app-button" type="button" (click)="onClick()" color="accent" mat-raised-button>Meal Out</button>
   </div>
-    <div class="row mt-5">
-      <div class="col-4">
-        <button mat-stroked-button aria-label="Clock Out" type="submit"><a (click)="onClockOut()"><img id="app-button" src="assets/020-clock-1.png"></a></button>
-      </div>
-      <div class="col-4">
-        <button type="submit"><a><img id="app-button" src="assets/cutlery.png" alt="Meal End"></a></button>
-      <!-- <a><img src="assets/settings-gears.png" id="app-button" alt="Settings"></a> -->  
-      </div>
-    </div>
+  <div class="row">
+    <button mat-raised-button color="link" style="width:300px; margin:10px auto;">View Timesheet</button>
+  </div>
 </div>
-<!-- <router-outlet></router-outlet> -->
+

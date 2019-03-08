@@ -1,8 +1,9 @@
 #app-button {
-    max-height: 96px;
-    max-width: 96px;
-    /* border: 1px solid black; */
-    cursor: pointer;
-    /* margin-right: auto; */
-    
+    height: 100px;
+    width: 100px;
+    margin: 5px auto;
+}
+
+.container {
+    width: 35%;
 }

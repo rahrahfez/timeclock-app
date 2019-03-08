@@ -9,7 +9,21 @@ export class ClockService {
     displayCurrentTime() {
         return this.clock = new Observable<string>((observer => {
             setInterval(() =>
-            observer.next(new Date().toString()), 1000)
+                observer.next(new Date().toString()), 1000)
         }));
+    }
+
+    getCurrentDateAndTime() {
+        const date = new Date().toString();
+        console.log(date);
+        return date;
+    }
+
+    getCurrentTime() {
+
+    }
+
+    getCurrentDate() {
+
     }
 }

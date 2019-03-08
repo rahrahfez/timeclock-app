@@ -1,10 +1,4 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-4">
-      <p id="date">{{ currentTime | async | date: 'fullDate' }}</p>
-    </div>
-    <div class="col-sm-8" id="time">
-      <p>{{ currentTime | async | date: 'shortTime' }}</p>
-    </div>
-  </div>
+    <p id="date">{{ currentTime | async | date: 'fullDate' }}</p>
+    <p id="time">{{ currentTime | async | date: 'shortTime' }}</p>
 </div>

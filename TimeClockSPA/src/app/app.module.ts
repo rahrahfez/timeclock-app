@@ -13,19 +13,21 @@ import { AppComponent } from './app.component';
 import { DisplayTimeComponent } from './display-time/display-time.component';
 import { HomeComponent } from './home/home.component';
 import { ClockService } from '_services/clock.service';
-import { UserInputComponent } from './user-input/user-input.component';
 import { routes } from '_services/routes.module';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DisplayTimeComponent,
     HomeComponent,
-    UserInputComponent,
     ButtonsComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
