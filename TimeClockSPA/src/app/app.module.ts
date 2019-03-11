@@ -8,6 +8,7 @@ import {
   MatFormFieldModule, 
   MatInputModule,
   MatButtonModule } from '@angular/material/';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { DisplayTimeComponent } from './display-time/display-time.component';
@@ -18,6 +19,9 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ServerService } from '_services/server.service';
+import { UserService } from '_services/user.service';
+
 
 @NgModule({
   declarations: [
@@ -37,10 +41,13 @@ import { FooterComponent } from './footer/footer.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule  
+    MatButtonModule,
+    HttpClientModule  
   ],
   providers: [
-    ClockService
+    ClockService,
+    ServerService,
+    UserService
   ],
   bootstrap: [
     AppComponent

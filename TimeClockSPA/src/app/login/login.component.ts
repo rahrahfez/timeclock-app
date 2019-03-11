@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+
+import { ServerService } from '_services/server.service';
+import { ClockService } from '_services/clock.service';
 
 @Component({
   selector: 'app-login',
@@ -13,14 +15,16 @@ export class LoginComponent implements OnInit {
     'userPw': new FormControl('')
   });
 
-  constructor(private router: Router) { }
+  constructor(private clockService: ClockService, 
+              private serverService: ServerService) { }
 
   ngOnInit() {
 
   }
 
   onSubmit() {
-    this.router.navigate(['buttons']);
+    this.serverService.storeTime().subscribe(
+      (response) => console.log(response)
+    );
   }
-
 }

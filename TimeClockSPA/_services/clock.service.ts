@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 export class ClockService {
     clock: Observable<string>;
+    current = new Date();
 
     displayCurrentTime() {
         return this.clock = new Observable<string>((observer => {
@@ -20,7 +21,7 @@ export class ClockService {
     }
 
     getCurrentTime() {
-
+        return new Date().toString();
     }
 
     getCurrentDate() {

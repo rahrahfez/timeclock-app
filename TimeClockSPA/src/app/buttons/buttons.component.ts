@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { ClockService } from '_services/clock.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class ButtonsComponent implements OnInit {
 
     onClick() {
       this.router.navigate(['login']);
-      this.clockService.getCurrentDateAndTime();
+      // this.clockService.getCurrentDateAndTime();
   }
 }
 
