@@ -15,9 +15,13 @@ export class ButtonsComponent implements OnInit {
   ngOnInit() {
   }
 
-    onClick() {
-      this.router.navigate(['login']);
-      // this.clockService.getCurrentDateAndTime();
+  onClick() {
+    this.router.navigate(['/login']);
+    // this.clockService.getCurrentDateAndTime();
+  }
+
+  onViewTimesheet() {
+    this.router.navigate(['/timesheet']);
   }
 }
 

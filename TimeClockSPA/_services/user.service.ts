@@ -8,8 +8,8 @@ export class UserService {
     constructor() {}
 
     users: User[] = [
-        new User(1, 1, [new Timestamp('Fri Mar 12', '12:00 pm')]),
-        new User(2, 2, [new Timestamp('Thu Mar 11', '3:09 am')])
+        new User(1, 1, [new Timestamp('Fri Mar 12 12:00 pm')]),
+        new User(2, 2, [new Timestamp('Thu Mar 11 3:09 am')])
     ]
  
     getUsers() {

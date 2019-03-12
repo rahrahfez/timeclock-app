@@ -1,6 +1,8 @@
 //  A service that provides a component to display current real time,
 // record a time stamp, ...
 
+// TODO: add feature to get time by date and/or time
+
 import { Observable } from 'rxjs';
 
 export class ClockService {

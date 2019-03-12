@@ -21,6 +21,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ServerService } from '_services/server.service';
 import { UserService } from '_services/user.service';
+import { TimesheetComponent } from './timesheet/timesheet.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { UserService } from '_services/user.service';
     ButtonsComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    TimesheetComponent
   ],
   imports: [
     BrowserModule,

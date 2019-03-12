@@ -1,0 +1,5 @@
+- Should I format each Date() to separate date from time? Or format it after getting full string.
+- Create page to view timesheet. (done)
+
+- Fix back button to only show when not on homepage.
+- Do i need to login to view timesheet? (yes).

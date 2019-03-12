@@ -10,16 +10,19 @@ import { ClockService } from '_services/clock.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm = new FormGroup({
-    'userId': new FormControl(''),
-    'userPw': new FormControl('')
-  });
+  // loginForm = new FormGroup({
+  //   'userId': new FormControl('')
+  //   // 'userPw': new FormControl('')
+  // });
 
-  constructor(private clockService: ClockService, 
-              private serverService: ServerService) { }
+  loginForm: FormGroup;
+
+  constructor(private serverService: ServerService) { }
 
   ngOnInit() {
-
+    this.loginForm = new FormGroup({
+      'id': new FormControl('')
+    });
   }
 
   onSubmit() {
