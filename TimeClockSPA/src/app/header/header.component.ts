@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,22 +6,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  id: string;
-  isHome: false;
+  backButtonVisibility: false;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
-    this.id = this.router.url;
-    console.log(this.id);
-    console.log(this.router.url);
+
   }
 
-  isHomepage() {
-    if(this.id === '/') {
-      return true;
-    }
-    // return !this.isHome;
+  toggleBackButton() {
+    return true;
   }
 
 }

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { User } from '../_models/user.model';
-import { Timestamp } from '_models/timestamp.model';
 import { ServerService } from './server.service';
+import { User } from '../_models/user.model';
 
 @Injectable()
 export class UserService {
@@ -17,10 +16,17 @@ export class UserService {
 
     addNewUser(user: string) {
         this.users.push(user);
-        this.serverService.addNewUsers(this.users);
+        this.serverService.addNewUsers(this.users)
+            .subscribe(
+                (response) => console.log(response)
+            );
     }
 
     getUsers() {
+        this.serverService.getUsers();
+    }
+
+    getUserTimestamp(user: string) {
 
     }
 

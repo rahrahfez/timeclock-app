@@ -24,8 +24,11 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     // storeTime() actually submits an array of strings for testing purposes.
+    // Will later on submit time when user clicks button and saves the time
+    // in the database.
+
     const user = this.loginForm.get('id').value;
-    // this.userService.addNewUser(user);
+    this.userService.addNewUser(user);
     console.log(user);
   }
 }

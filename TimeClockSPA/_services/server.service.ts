@@ -19,8 +19,8 @@ export class ServerService {
     }
 
     // Put request: Initialize the user with dummy timestamp. 
-    addNewUsers(string: string[]) {
-        return this.http.post<string[]>(this.url, string);
+    addNewUsers(users: string[]) {
+        return this.http.put<string[]>(this.url, users);
     }
 
     // Get request: Get authenticated user's timestamp.
@@ -29,7 +29,7 @@ export class ServerService {
     }
 
     // Get request: A list of all the Users.
-    getUsers(): Observable<any> {
+    getUsers() {
         return this.http.get(this.url);
     }
 
