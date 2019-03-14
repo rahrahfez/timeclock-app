@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ClockService } from '_services/clock.service';
+import { ServerService } from '_services/server.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-buttons',
   templateUrl: './buttons.component.html',
   styleUrls: ['./buttons.component.css']
 })
-export class ButtonsComponent implements OnInit {
+export class ButtonsComponent implements OnInit, OnDestroy {
+  subscription: Subscription;
 
-  constructor(private router: Router, private clockService: ClockService) { }
+  constructor(private router: Router, private serverService: ServerService) { }
 
   ngOnInit() {
   }
@@ -21,7 +23,15 @@ export class ButtonsComponent implements OnInit {
   }
 
   onViewTimesheet() {
-    this.router.navigate(['/timesheet']);
+    // this.router.navigate(['/timesheet']);
+    this.subscription = this.serverService.getUsers()
+      .subscribe(
+        (response) => console.log(response)
+      );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
 

@@ -9,9 +9,7 @@ import { UserService } from './user.service';
 export class ServerService {
     url = 'https://timeclock-app-srs.firebaseio.com/data.json';
 
-    constructor(private http: HttpClient, 
-                private clockService: ClockService,
-                private userService: UserService) {}
+    constructor(private http: HttpClient) {}
 
 
     // Post request: Append timestamp for authenticated user.
@@ -21,10 +19,23 @@ export class ServerService {
     }
 
     // Put request: Initialize the user with dummy timestamp. 
+    addNewUsers(string: string[]) {
+        return this.http.post<string[]>(this.url, string);
+    }
 
     // Get request: Get authenticated user's timestamp.
     getTimestamps() {
         
+    }
+
+    // Get request: A list of all the Users.
+    getUsers(): Observable<any> {
+        return this.http.get(this.url);
+    }
+
+    // Get request: A single user, given the id.
+    getUser(id: number) {
+
     }
 
     // Delete request: Deletes user from system.

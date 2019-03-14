@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ServerService } from '_services/server.service';
 import { ClockService } from '_services/clock.service';
+import { Router } from '@angular/router';
+import { UserService } from '_services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -10,24 +12,20 @@ import { ClockService } from '_services/clock.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  // loginForm = new FormGroup({
-  //   'userId': new FormControl('')
-  //   // 'userPw': new FormControl('')
-  // });
-
   loginForm: FormGroup;
 
-  constructor(private serverService: ServerService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      'id': new FormControl('')
+      'id': new FormControl(null, Validators.required)
     });
   }
 
-  onSubmit() {
-    this.serverService.storeTime().subscribe(
-      (response) => console.log(response)
-    );
+  onSubmit(): void {
+    // storeTime() actually submits an array of strings for testing purposes.
+    const user = this.loginForm.get('id').value;
+    // this.userService.addNewUser(user);
+    console.log(user);
   }
 }
