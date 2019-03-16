@@ -5,17 +5,13 @@ import { User } from '../_models/user.model';
 
 @Injectable()
 export class UserService {
+    users: User[];
+
     constructor(private serverService: ServerService) {}
 
-    // users: User[] = [
-    //     new User(1, 1, [new Timestamp('Fri Mar 12 12:00 pm')]),
-    //     new User(2, 2, [new Timestamp('Thu Mar 11 3:09 am')])
-    // ]
-
-    users = ['charlie', 'marly'];
-
     addNewUser(user: string) {
-        this.users.push(user);
+        let newUser = { id: user };
+        this.users.push(newUser);
         this.serverService.addNewUsers(this.users)
             .subscribe(
                 (response) => console.log(response)

@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
+// An entry point to accessing database. Allows client to use HTTP requests to get data.
+
+import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { User } from '_models/user.model';
 
 @Injectable()
-export class ServerService {
+export class DataStorageService {
     url = 'https://timeclock-app-srs.firebaseio.com/data.json';
 
     constructor(private http: HttpClient) {}
@@ -38,4 +40,5 @@ export class ServerService {
     }
 
     // Delete request: Deletes user from system.
+
 }

@@ -22,6 +22,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ServerService } from '_services/server.service';
 import { UserService } from '_services/user.service';
 import { TimesheetComponent } from './timesheet/timesheet.component';
+import { DataStorageService } from '_services/data-storage.service';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { TimesheetComponent } from './timesheet/timesheet.component';
   providers: [
     ClockService,
     ServerService,
-    UserService
+    UserService,
+    DataStorageService
   ],
   bootstrap: [
     AppComponent
