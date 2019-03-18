@@ -24,14 +24,10 @@ export class ButtonsComponent implements OnInit, OnDestroy {
 
   onViewTimesheet() {
     // this.router.navigate(['/timesheet']);
-    this.subscription = this.dataStorageService.getUsers()
-      .subscribe(
-        (response) => console.log(response)
-      );
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+
   }
 }
 

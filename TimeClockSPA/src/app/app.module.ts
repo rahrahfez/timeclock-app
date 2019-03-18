@@ -7,7 +7,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { 
   MatFormFieldModule, 
   MatInputModule,
-  MatButtonModule } from '@angular/material/';
+  MatButtonModule,
+  MatMenuModule,
+  MatToolbarModule
+ } from '@angular/material/';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -45,6 +48,8 @@ import { AuthService } from '_services/auth.service';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatMenuModule,
+    MatToolbarModule,
     HttpClientModule  
   ],
   providers: [

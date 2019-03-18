@@ -1,6 +1,6 @@
-.header-section {
-    margin-top: 25px;
-    /* font-size: 48px; */
+#navbar {
+    /* margin-top: 25px; */
+    display: flex;
 }
 
 a:visited {
@@ -9,4 +9,8 @@ a:visited {
 
 #settings-icon {
     font-size: 36px;
+}
+
+.fill-empty-space {
+    flex: 1 1 auto;
 }

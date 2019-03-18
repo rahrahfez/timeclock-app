@@ -1,8 +1,15 @@
-<div class="container header-section">
-    <div *ngIf="!toggleBackButton()">
-        <a routerLink="/home"><i class="material-icons">arrow_back_ios</i></a>
-    </div>
-    <div><p>Welcome: </p>
-        <i id="settings-icon" class="material-icons">settings</i>
-    </div>
+<div class="container" id="navbar">
+    <mat-toolbar color="accent">
+        <span>Timeclock-App</span>
+        <span class="fill-empty-space"></span>
+        <span>
+            <button mat-menu-icon mat-button [matMenuTriggerFor]="appMenu">
+                <i id="settings-icon" class="material-icons">settings</i>
+            </button>       
+            <mat-menu #appMenu="matMenu">
+                <button mat-menu-item>Sign Out</button>
+            </mat-menu>
+        </span>
+        
+    </mat-toolbar>
 </div>
