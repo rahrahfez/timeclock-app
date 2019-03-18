@@ -1,29 +1,39 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { ServerService } from './server.service';
 import { User } from '../_models/user.model';
+import { DataStorageService } from './data-storage.service';
+
 
 @Injectable()
-export class UserService {
-    users: User[];
+export class UserService implements OnInit, OnDestroy {
+    subscription: Subscription;
+    users = [
+        new User("admin", "password")
+    ];
 
-    constructor(private serverService: ServerService) {}
+    constructor(private dbService: DataStorageService) {}
 
-    addNewUser(user: string) {
-        let newUser = { id: user };
-        this.users.push(newUser);
-        this.serverService.addNewUsers(this.users)
-            .subscribe(
-                (response) => console.log(response)
-            );
+    ngOnInit() {
+
+    }
+
+    addNewUserToDatabase(id: string, password: string) {
+        let user = new User(id, password);
+        this.users.push(user);
+        this.subscription = this.dbService.addNewUsers(this.users).subscribe();
     }
 
     getUsers() {
-        this.serverService.getUsers();
+
     }
 
     getUserTimestamp(user: string) {
 
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 
 }

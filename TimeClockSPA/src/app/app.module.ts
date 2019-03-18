@@ -19,10 +19,10 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { ServerService } from '_services/server.service';
 import { UserService } from '_services/user.service';
 import { TimesheetComponent } from './timesheet/timesheet.component';
 import { DataStorageService } from '_services/data-storage.service';
+import { AuthService } from '_services/auth.service';
 
 
 @NgModule({
@@ -49,7 +49,7 @@ import { DataStorageService } from '_services/data-storage.service';
   ],
   providers: [
     ClockService,
-    ServerService,
+    AuthService,
     UserService,
     DataStorageService
   ],

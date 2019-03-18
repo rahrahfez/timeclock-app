@@ -1,7 +1,9 @@
 import { Timestamp } from './timestamp.model';
 
-export interface User {
-    id: string;
+export class User {
+    // id: string;
+    // password: string;
     // clockedIn: Timestamp[];
+    constructor(public id: string, public password: string) {}
 }
     

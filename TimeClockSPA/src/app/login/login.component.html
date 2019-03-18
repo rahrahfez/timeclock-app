@@ -3,12 +3,14 @@
       <mat-form-field>
         <input type="text" matInput formControlName="id" placeholder="User ID">
       </mat-form-field>
-      <!-- <mat-form-field> -->
+      <br>
+      <mat-form-field> 
         <!-- add a check to see if user id is authentic, then allow user to enter password -->
-        <!-- <input type="text" matInput formControlName="userPw" placeholder="Password"> -->
-      <!-- </mat-form-field> -->
+        <input type="text" matInput formControlName="password" placeholder="Password">
+      </mat-form-field>
     </form>
     <!-- change AddUser back to Submit. This is only to test adding a user to database -->
     <!-- and returning the values later -->
-    <button mat-raised-button color="accent" (click)="onSubmit()" type="submit">Submit</button>
+    <button mat-raised-button color="accent" (click)="onSubmit()" type="submit">Log In</button>
+    <button mat-raised-button color="accent" (click)="addNewUser()" type="submit">Add User</button>
 </div>

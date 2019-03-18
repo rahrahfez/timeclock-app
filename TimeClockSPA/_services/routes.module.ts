@@ -9,7 +9,7 @@ export const routes: Routes = [
     { path: 'home', component: ButtonsComponent },
     { path: 'login', component: LoginComponent },
     { path: 'timesheet', component: TimesheetComponent },
-    { path: '**', redirectTo: '/home',
+    { path: '**', redirectTo: '/login',
                 pathMatch: 'full' }, 
 
 ]

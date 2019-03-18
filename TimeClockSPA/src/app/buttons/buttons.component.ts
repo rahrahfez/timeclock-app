@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ServerService } from '_services/server.service';
 import { Subscription } from 'rxjs';
+import { DataStorageService } from '_services/data-storage.service';
 
 @Component({
   selector: 'app-buttons',
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 export class ButtonsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
-  constructor(private router: Router, private serverService: ServerService) { }
+  constructor(private router: Router, private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
   }
@@ -24,7 +24,7 @@ export class ButtonsComponent implements OnInit, OnDestroy {
 
   onViewTimesheet() {
     // this.router.navigate(['/timesheet']);
-    this.subscription = this.serverService.getUsers()
+    this.subscription = this.dataStorageService.getUsers()
       .subscribe(
         (response) => console.log(response)
       );

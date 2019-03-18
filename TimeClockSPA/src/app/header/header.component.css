@@ -1,8 +1,12 @@
-i {
+.header-section {
     margin-top: 25px;
-    font-size: 48px;
+    /* font-size: 48px; */
 }
 
 a:visited {
     color: black;
+}
+
+#settings-icon {
+    font-size: 36px;
 }

@@ -21,7 +21,7 @@ export class DataStorageService {
 
     // Put request: Initialize the user with dummy timestamp. 
     addNewUsers(users: User[]) {
-        return this.http.put<string[]>(this.url, users);
+        return this.http.post<User[]>(this.url, users);
     }
 
     // Get request: Get authenticated user's timestamp.
@@ -31,7 +31,12 @@ export class DataStorageService {
 
     // Get request: A list of all the Users.
     getUsers() {
-        return this.http.get(this.url);
+        return this.http.get(this.url)
+            .subscribe(
+                (users: User[]) => {
+                    return users;
+                }
+            );
     }
 
     // Get request: A single user, given the id.
