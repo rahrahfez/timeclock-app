@@ -5,18 +5,21 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { User } from '_models/user.model';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class DataStorageService {
-    url = 'https://timeclock-app-srs.firebaseio.com/data.json';
+    url = 'https://timeclock-app-srs.firebaseio.com/data.json?auth=';
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient,
+                private authService: AuthService) {}
 
 
     // Post request: Append timestamp for authenticated user.
     storeTime(): Observable<string> {
         // currently implemented in login submit button
-        return this.http.post<string>(this.url, 'test');
+        const token = this.authService.getToken();
+        return this.http.post<string>(this.url + token, 'test');
     }
 
     // Put request: Initialize the user with dummy timestamp. 
@@ -31,12 +34,7 @@ export class DataStorageService {
 
     // Get request: A list of all the Users.
     getUsers() {
-        return this.http.get(this.url)
-            .subscribe(
-                (users: User[]) => {
-                    return users;
-                }
-            );
+        
     }
 
     // Get request: A single user, given the id.

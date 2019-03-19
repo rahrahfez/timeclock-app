@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { UserService } from '_services/user.service';
 import { AuthService } from '_services/auth.service';
-import { DataStorageService } from '_services/data-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,27 +12,28 @@ import { DataStorageService } from '_services/data-storage.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private userService: UserService, 
-              private authService: AuthService,
-              private dbService: DataStorageService) { }
+  constructor(private authService: AuthService,
+              private route: Router) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      'id': new FormControl(null, Validators.required),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
       'password': new FormControl(null, Validators.required)
     });
   }
 
   onSubmit(): void {
     // Will now authenticate using the service to verify user. Once validated, will reroute to buttons page.
-
+    const email = this.loginForm.get('email').value;
+    const pw = this.loginForm.get('password').value;
+    this.authService.signinUser(email, pw);
+    this.route.navigate(["/home"]);
   }
 
   addNewUser() {
     // Will test sending data(User) to database. Will use UserService to send form info to database.
-    const id = this.loginForm.get('id').value;
+    const email = this.loginForm.get('email').value;
     const pw = this.loginForm.get('password').value;
-    this.userService.addNewUserToDatabase(id, pw);
-    console.log('id: ' + id + ' pw: ' + pw);
+    this.authService.signupUser(email, pw);
   }
 }
