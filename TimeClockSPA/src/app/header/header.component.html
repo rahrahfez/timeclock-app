@@ -2,19 +2,17 @@
     <mat-toolbar color="accent">
         <span>Timeclock-App</span>
         <span class="fill-empty-space"></span>
-        <span>Welcome </span>
+        
         <ng-template [ngIf]="authService.isAuthenticated()">
+            <span id="welcome-tag">Welcome {{ authService.getCurrentUser() }}</span>
             <span>
                 <button mat-menu-icon mat-stroked-button [matMenuTriggerFor]="appMenu">
                     <i id="settings-icon" class="material-icons">settings</i>
                 </button>       
                 <mat-menu #appMenu="matMenu">
-                    <button mat-menu-item>Sign Out</button>
+                    <button mat-menu-item (click)="signOut()">Sign Out</button>
                 </mat-menu>
             </span>
         </ng-template>
-        
-        
-        
     </mat-toolbar>
 </div>

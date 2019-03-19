@@ -14,3 +14,7 @@ a:visited {
 .fill-empty-space {
     flex: 1 1 auto;
 }
+
+#welcome-tag {
+    margin-right: 15px;
+}
