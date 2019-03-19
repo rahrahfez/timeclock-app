@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
+import { key } from 'src/config';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,6 @@ export class AppComponent implements OnInit {
   title = 'TimeClockSPA';
 
   ngOnInit() {
-    firebase.initializeApp({
-      apiKey: "AIzaSyDgoySXyokyYdfp2MirYLimhI0om0pMl14",
-      authDomain: "timeclock-app-srs.firebaseapp.com"
-    });
+    firebase.initializeApp(key);
   }
 }

@@ -32,4 +32,12 @@ export class AuthService {
             );
         return this.token;
     }
+
+    isAuthenticated() {
+        return this.token != null;
+    }
+
+    getCurrentUser(): string {
+        return firebase.auth().currentUser.uid;
+    }
 }

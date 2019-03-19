@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '_services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,14 +8,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
 
   }
-
-  toggleBackButton() {
-    return true;
-  }
-
 }

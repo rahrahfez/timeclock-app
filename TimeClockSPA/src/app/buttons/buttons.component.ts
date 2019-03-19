@@ -10,20 +10,22 @@ import { DataStorageService } from '_services/data-storage.service';
   styleUrls: ['./buttons.component.css']
 })
 export class ButtonsComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
 
-  constructor(private router: Router, private dataStorageService: DataStorageService) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  clockIn() {
+    
+  }
+
   onClick() {
-    this.router.navigate(['/login']);
     // this.clockService.getCurrentDateAndTime();
   }
 
   onViewTimesheet() {
-    // this.router.navigate(['/timesheet']);
+    this.router.navigate(['/timesheet']);
   }
 
   ngOnDestroy() {

@@ -1,6 +1,4 @@
-p {
-    /* position: fixed; */
+#copyright {
     margin-top: 300px;
-    bottom: 0;
-    /* margin-left: 200px; */
+    float: right;
 }

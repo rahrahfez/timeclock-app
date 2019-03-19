@@ -2,14 +2,19 @@
     <mat-toolbar color="accent">
         <span>Timeclock-App</span>
         <span class="fill-empty-space"></span>
-        <span>
-            <button mat-menu-icon mat-stroked-button [matMenuTriggerFor]="appMenu">
-                <i id="settings-icon" class="material-icons">settings</i>
-            </button>       
-            <mat-menu #appMenu="matMenu">
-                <button mat-menu-item>Sign Out</button>
-            </mat-menu>
-        </span>
+        <span>Welcome </span>
+        <ng-template [ngIf]="authService.isAuthenticated()">
+            <span>
+                <button mat-menu-icon mat-stroked-button [matMenuTriggerFor]="appMenu">
+                    <i id="settings-icon" class="material-icons">settings</i>
+                </button>       
+                <mat-menu #appMenu="matMenu">
+                    <button mat-menu-item>Sign Out</button>
+                </mat-menu>
+            </span>
+        </ng-template>
+        
+        
         
     </mat-toolbar>
 </div>
