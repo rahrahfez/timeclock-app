@@ -22,18 +22,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {
+  login(): void {
     // Will now authenticate using the service to verify user. Once validated, will reroute to buttons page.
     const email = this.loginForm.get('email').value;
     const pw = this.loginForm.get('password').value;
     this.authService.signinUser(email, pw);
-    this.route.navigate(["/home"]);
+    if(this.authService.isAuthenticated()) {
+      this.route.navigate(["/home"]);
+    }
   }
 
-  addNewUser() {
-    // Will test sending data(User) to database. Will use UserService to send form info to database.
-    const email = this.loginForm.get('email').value;
-    const pw = this.loginForm.get('password').value;
-    this.authService.signupUser(email, pw);
-  }
+  // addNewUser() {
+  //   const email = this.loginForm.get('email').value;
+  //   const pw = this.loginForm.get('password').value;
+  //   this.authService.signupUser(email, pw);
+  // }
 }

@@ -1,7 +1,12 @@
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 
+@Injectable()
 export class AuthService {
     token: string;
+
+    constructor(private router: Router) {}
 
     signupUser(email: string, password: string) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -23,6 +28,7 @@ export class AuthService {
             .catch(
                 error => console.log(error)
             );
+            this.router.navigate(['/home']);
     }
 
     getToken(): string {

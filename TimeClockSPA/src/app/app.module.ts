@@ -26,6 +26,7 @@ import { UserService } from '_services/user.service';
 import { TimesheetComponent } from './timesheet/timesheet.component';
 import { DataStorageService } from '_services/data-storage.service';
 import { AuthService } from '_services/auth.service';
+import { AuthGuard } from '_services/auth-guard.service';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { AuthService } from '_services/auth.service';
     ClockService,
     AuthService,
     UserService,
-    DataStorageService
+    DataStorageService,
+    AuthGuard
   ],
   bootstrap: [
     AppComponent

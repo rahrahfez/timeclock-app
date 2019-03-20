@@ -17,16 +17,14 @@ export class ClockService {
     }
 
     getCurrentDateAndTime() {
-        const date = new Date().toString();
-        console.log(date);
-        return date;
-    }
-
-    getCurrentTime() {
         return new Date().toString();
     }
 
-    getCurrentDate() {
+    getCurrentTime(): string {
+        return new Date().toString();
+    }
 
+    getCurrentDate(): string {
+        return new Date().toString();
     }
 }

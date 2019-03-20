@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   constructor(private authService: AuthService,
-              private route: Router) { }
+              private router: Router) { }
 
   ngOnInit() {
 
@@ -18,5 +18,6 @@ export class HeaderComponent implements OnInit {
 
   signOut() {
     this.authService.signout();
+    this.router.navigate(['/login']);
   }
 }

@@ -8,9 +8,6 @@ import { DataStorageService } from './data-storage.service';
 @Injectable()
 export class UserService implements OnInit, OnDestroy {
     subscription: Subscription;
-    users = [
-        new User("admin", "password")
-    ];
 
     constructor(private dbService: DataStorageService) {}
 
@@ -19,9 +16,7 @@ export class UserService implements OnInit, OnDestroy {
     }
 
     addNewUserToDatabase(id: string, password: string) {
-        let user = new User(id, password);
-        this.users.push(user);
-        this.subscription = this.dbService.addNewUsers(this.users).subscribe();
+        
     }
 
     getUsers() {

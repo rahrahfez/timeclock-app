@@ -1,4 +1,7 @@
-#copyright {
+#footer {
     margin-top: 100px;
-    float: right;
+}
+
+#copyright {
+    font-size: .6em;
 }
