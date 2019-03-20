@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private authService: AuthService,
-              private route: Router) { }
+              private router: Router) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -27,9 +27,10 @@ export class LoginComponent implements OnInit {
     const email = this.loginForm.get('email').value;
     const pw = this.loginForm.get('password').value;
     this.authService.signinUser(email, pw);
-    if(this.authService.isAuthenticated()) {
-      this.route.navigate(["/home"]);
-    }
+  
+    setTimeout(() => {
+      console.log(this.authService.getCurrentUserProfile()),
+      this.router.navigate(['/home'])}, 1000);
   }
 
   // addNewUser() {

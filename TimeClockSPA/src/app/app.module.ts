@@ -9,7 +9,8 @@ import {
   MatInputModule,
   MatButtonModule,
   MatMenuModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatTableModule
  } from '@angular/material/';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -51,6 +52,7 @@ import { AuthGuard } from '_services/auth-guard.service';
     MatButtonModule,
     MatMenuModule,
     MatToolbarModule,
+    MatTableModule,
     HttpClientModule  
   ],
   providers: [
