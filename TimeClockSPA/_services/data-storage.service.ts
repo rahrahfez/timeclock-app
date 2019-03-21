@@ -6,20 +6,32 @@ import { Observable } from 'rxjs';
 
 import { User } from '_models/user.model';
 import { AuthService } from './auth.service';
+import { ClockService } from './clock.service';
 
 @Injectable()
 export class DataStorageService {
-    url = 'https://timeclock-app-srs.firebaseio.com/data.json?auth=';
+    url = 'https://timeclock-app-srs.firebaseio.com/data.json?auth=';   
 
     constructor(private http: HttpClient,
-                private authService: AuthService) {}
+                private authService: AuthService,
+                private clockService: ClockService) {}
 
 
     // Post request: Append timestamp for authenticated user.
-    storeTime(): Observable<string> {
+    storeTime(): Observable<any> {
         // currently implemented in login submit button
         const token = this.authService.getToken();
-        return this.http.post<string>(this.url + token, 'test');
+        const timestamp = this.clockService.getCurrentDateAndTime();
+        const user = {
+            id: 'test',
+            clockIn: [
+                { 
+                    date: this.clockService.getCurrentDate(),
+                    time: this.clockService.getCurrentTime() 
+                }
+            ]
+        }
+        return this.http.post<User>(this.url + token, user);
     }
 
     // Put request: Initialize the user with dummy timestamp. 
@@ -27,19 +39,10 @@ export class DataStorageService {
         return this.http.post<User[]>(this.url, users);
     }
 
-    // Get request: Get authenticated user's timestamp.
-    getTimestamps() {
-        
-    }
-
-    // Get request: A list of all the Users.
-    getUsers() {
-        
-    }
-
     // Get request: A single user, given the id.
-    getUser(id: number) {
-
+    getUser() {
+        const token = this.authService.getToken();
+        return this.http.get(this.url + token);
     }
 
     // Delete request: Deletes user from system.

@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Subscription } from 'rxjs';
-import { DataStorageService } from '_services/data-storage.service';
+import { UserService } from '_services/user.service';
 
 @Component({
   selector: 'app-buttons',
@@ -11,13 +10,14 @@ import { DataStorageService } from '_services/data-storage.service';
 })
 export class ButtonsComponent implements OnInit, OnDestroy {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private userService: UserService) { }
 
   ngOnInit() {
   }
 
   clockIn() {
-    
+    this.userService.submitTime();
   }
 
   onClick() {

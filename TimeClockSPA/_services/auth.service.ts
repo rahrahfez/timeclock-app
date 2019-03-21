@@ -51,6 +51,10 @@ export class AuthService {
         return firebase.auth().currentUser.email;
     }
 
+    getCurrentUserId(): string {
+        return firebase.auth().currentUser.uid;
+    }
+
     signout() {
         firebase.auth().signOut();
         this.token = null;

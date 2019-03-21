@@ -21,10 +21,10 @@ export class ClockService {
     }
 
     getCurrentTime(): string {
-        return new Date().toString();
+        return new Date().toLocaleTimeString();
     }
 
     getCurrentDate(): string {
-        return new Date().toString();
+        return new Date().toDateString();
     }
 }
