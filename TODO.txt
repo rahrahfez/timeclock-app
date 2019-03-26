@@ -6,3 +6,5 @@
 
 - only have one user, admin.
 - how to link timeclock per user.
+
+- change user.id to date, which will have its own nested items of clockin/out times.

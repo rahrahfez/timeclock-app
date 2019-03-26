@@ -21,28 +21,21 @@ export class DataStorageService {
     storeTime(): Observable<any> {
         // currently implemented in login submit button
         const token = this.authService.getToken();
-        const timestamp = this.clockService.getCurrentDateAndTime();
-        const user = {
-            id: 'test',
-            clockIn: [
-                { 
-                    date: this.clockService.getCurrentDate(),
-                    time: this.clockService.getCurrentTime() 
-                }
-            ]
-        }
-        return this.http.post<User>(this.url + token, user);
+        
+        return this.http.post<User>(this.url + token, 'user');
     }
 
     // Put request: Initialize the user with dummy timestamp. 
-    addNewUsers(users: User[]) {
-        return this.http.post<User[]>(this.url, users);
-    }
 
     // Get request: A single user, given the id.
-    getUser() {
+    getDataAsString(): Observable<string> {
         const token = this.authService.getToken();
-        return this.http.get(this.url + token);
+        return this.http.get(this.url + token, { responseType: 'text' });
+    }
+
+    getDataAsJson(): Observable<object> {
+        const token = this.authService.getToken();
+        return this.http.get<User>(this.url + token);
     }
 
     // Delete request: Deletes user from system.

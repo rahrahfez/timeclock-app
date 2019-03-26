@@ -28,6 +28,7 @@ import { TimesheetComponent } from './timesheet/timesheet.component';
 import { DataStorageService } from '_services/data-storage.service';
 import { AuthService } from '_services/auth.service';
 import { AuthGuard } from '_services/auth-guard.service';
+import { ViewCurrentlyComponent } from './view-currently/view-currently.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { AuthGuard } from '_services/auth-guard.service';
     LoginComponent,
     HeaderComponent,
     FooterComponent,
-    TimesheetComponent
+    TimesheetComponent,
+    ViewCurrentlyComponent
   ],
   imports: [
     BrowserModule,

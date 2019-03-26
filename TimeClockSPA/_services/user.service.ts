@@ -1,32 +1,46 @@
 import { Injectable, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
-import { User } from '../_models/user.model';
 import { DataStorageService } from './data-storage.service';
-
+import { User } from '_models/user.model';
 
 @Injectable()
-export class UserService implements OnInit{
-    user: User;
+export class UserService implements OnInit {
+    users$: Observable<any>;
 
+    user: User;
+    
     constructor(private dbService: DataStorageService) {}
 
     ngOnInit() {
-
+        
     }  
 
     submitTime() {
         this.dbService.storeTime().subscribe();
     }
 
-    getUser(): User {
-        this.dbService.getUser()
+    getUsersTimestamp() {
+        return this.users$
             .pipe(
-                map((user: User) => this.user = user)
+                map(
+                    (response) => {
+                        this.user = response
+                    })
             )
-            .subscribe(
-                () => console.log(this.user)
-            );
+    }
+
+    setUser() {
+        this.dbService.getDataAsJson()
+            .pipe(
+                map(
+                    (data) => this.user = {
+                    id: data['id']           
+                }));
+    }
+
+    getUser() {
         return this.user;
     }
 }

@@ -1,3 +1,5 @@
 export class Timestamp {
-    constructor(public date: string, public time: string){}
+    constructor(
+        public date: string, 
+        public time: string){}
 }
