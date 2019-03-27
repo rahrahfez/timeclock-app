@@ -1,5 +1,6 @@
-export class Timestamp {
-    constructor(
-        public date: string, 
-        public time: string){}
+export interface Timestamp {
+    date: string,
+    clockIn: string,
+    clockOut?: string
 }
+

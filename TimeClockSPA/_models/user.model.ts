@@ -9,4 +9,6 @@ import { Timestamp } from './timestamp.model';
     
 export interface User {
     id: string;
+    clockIn: Timestamp[],
+    clockOut: Timestamp[]
 }

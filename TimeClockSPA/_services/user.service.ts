@@ -31,15 +31,6 @@ export class UserService implements OnInit {
             )
     }
 
-    setUser() {
-        this.dbService.getDataAsJson()
-            .pipe(
-                map(
-                    (data) => this.user = {
-                    id: data['id']           
-                }));
-    }
-
     getUser() {
         return this.user;
     }

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { User } from '_models/user.model';
 import { AuthService } from './auth.service';
 import { ClockService } from './clock.service';
+import { Timestamp } from '_models/timestamp.model';
 
 @Injectable()
 export class DataStorageService {
@@ -20,22 +21,20 @@ export class DataStorageService {
     // Post request: Append timestamp for authenticated user.
     storeTime(): Observable<any> {
         // currently implemented in login submit button
-        const token = this.authService.getToken();
-        
+        const token = this.authService.getToken();       
         return this.http.post<User>(this.url + token, 'user');
     }
 
     // Put request: Initialize the user with dummy timestamp. 
-
-    // Get request: A single user, given the id.
-    getDataAsString(): Observable<string> {
+    sendData(data: Timestamp[]): Observable<any> {
         const token = this.authService.getToken();
-        return this.http.get(this.url + token, { responseType: 'text' });
+        return this.http.post<Timestamp[]>(this.url + token, data);
     }
 
-    getDataAsJson(): Observable<object> {
+    // Get request: A single user, given the id.
+    getData(): Observable<Timestamp[]> {
         const token = this.authService.getToken();
-        return this.http.get<User>(this.url + token);
+        return this.http.get<Timestamp[]>(this.url + token);
     }
 
     // Delete request: Deletes user from system.
