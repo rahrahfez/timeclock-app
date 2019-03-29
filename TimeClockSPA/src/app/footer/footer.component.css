@@ -5,3 +5,11 @@
 #copyright {
     font-size: .6em;
 }
+
+.fill-empty-space {
+    flex: 1 1 auto;
+}
+
+img {
+    cursor: pointer;
+}

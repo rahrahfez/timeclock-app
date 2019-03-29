@@ -8,3 +8,5 @@
 - how to link timeclock per user.
 
 - change user.id to date, which will have its own nested items of clockin/out times.
+- add pagination to timesheets
+- add check to see if any clockin/outs were done on the same day

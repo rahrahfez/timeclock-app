@@ -3,8 +3,8 @@ import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs';
 
 import { DataStorageService } from '_services/data-storage.service';
-import { Timestamp } from '_models/timestamp.model';
 import { MatTableDataSource } from '@angular/material';
+import { Timestamp } from '_models/timestamp.model';
 
 @Component({
   selector: 'app-timesheet',
@@ -12,17 +12,21 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./timesheet.component.css']
 })
 export class TimesheetComponent implements OnInit {
-  timestamps: Timestamp[] = [];
   displayedColumns = ['date', 'clockIn', 'clockOut'];
-  dataSource = new TimestampDataSource(this.db);
-  // dataSource = new MatTableDataSource<Timestamp>(); 
+  // dataSource = new TimestampDataSource(this.db);
+
+  // Use this to console.log subscription output
+  dataSource = new MatTableDataSource<Timestamp>();
 
   constructor(private db: DataStorageService) {}
 
   ngOnInit() {
-    // this.dataSource.data = this.db.getTimestamp();
-    // this.db.getData()
-    //   .subscribe()
+    this.db.getData()
+      .subscribe(
+        (data) => {
+          this.dataSource.data = data;
+          console.log(data);
+        })
   }
 }
 
@@ -30,6 +34,7 @@ export class TimestampDataSource extends DataSource<any> {
   constructor(private db: DataStorageService) {
     super();
   }
+
   connect(): Observable<any> {
     return this.db.getData();
   }

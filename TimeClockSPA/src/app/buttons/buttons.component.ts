@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { DataStorageService } from '_services/data-storage.service';
+import { TimestampService } from '_services/timestamp.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-buttons',
@@ -9,32 +11,33 @@ import { DataStorageService } from '_services/data-storage.service';
   styleUrls: ['./buttons.component.css']
 })
 export class ButtonsComponent implements OnInit, OnDestroy {
+  clockInSubscription: Subscription;
+  clockOutSubscription: Subscription;
+  getTimestampSubscription: Subscription;
 
-  constructor(private router: Router, private db: DataStorageService) { }
+  constructor(private tsService: TimestampService,
+              private router: Router) { }
 
   ngOnInit() {
+    this.getTimestampSubscription = this.tsService.getTimestamp();
   }
 
   clockIn() {
-    this.db.sendData()
-      .subscribe(console.log);
+    this.clockInSubscription = this.tsService.addClockInToTimestamps();
   }
 
-
-  // submitTime() {
-  //   this.db.sendData({ date: 'March 28th, 2019', clockIn: '12:00 am', clockOut: '5:00 pm'})
-  //     .subscribe(
-  //     (res) => console.log(res),
-  //     (err) => console.log(err),
-  //     () => console.log('completed'));
-  // }
+  clockOut() {
+    this.clockOutSubscription = this.tsService.addClockOutToTimestamps();
+  }
 
   onViewTimesheet() {
     this.router.navigate(['/timesheet']);
   }
 
   ngOnDestroy() {
-
+    this.clockInSubscription.unsubscribe();
+    this.clockOutSubscription.unsubscribe();
+    this.getTimestampSubscription.unsubscribe();
   }
 }
 

@@ -4,14 +4,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { 
-  MatFormFieldModule, 
-  MatInputModule,
-  MatButtonModule,
-  MatMenuModule,
-  MatToolbarModule,
-  MatTableModule
- } from '@angular/material/';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -29,6 +21,8 @@ import { DataStorageService } from '_services/data-storage.service';
 import { AuthService } from '_services/auth.service';
 import { AuthGuard } from '_services/auth-guard.service';
 import { ViewCurrentlyComponent } from './view-currently/view-currently.component';
+import { MyMaterialModule } from './my-material.module';
+import { TimestampService } from '_services/timestamp.service';
 
 
 @NgModule({
@@ -49,20 +43,16 @@ import { ViewCurrentlyComponent } from './view-currently/view-currently.componen
     RouterModule.forRoot(routes),
     NoopAnimationsModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatTableModule,
-    HttpClientModule  
+    HttpClientModule,
+    MyMaterialModule  
   ],
   providers: [
     ClockService,
     AuthService,
     UserService,
     DataStorageService,
-    AuthGuard
+    AuthGuard,
+    TimestampService
   ],
   bootstrap: [
     AppComponent
