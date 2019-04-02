@@ -10,3 +10,8 @@
 - change user.id to date, which will have its own nested items of clockin/out times.
 - add pagination to timesheets
 - add check to see if any clockin/outs were done on the same day
+
+- implement guards to stop user from clocking in/out more than once in the same day.
+- implement lunch in/out.
+
+- add a signup form for new users.

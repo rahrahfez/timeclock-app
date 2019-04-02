@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthService } from '_services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private authService: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -30,7 +31,8 @@ export class LoginComponent implements OnInit {
   
     setTimeout(() => {
       console.log(this.authService.getCurrentUserProfile()),
-      this.router.navigate(['/home'])}, 1000);
+      this.router.navigate(['/home'], { relativeTo: this.route })
+    }, 1000);
   }
 
   // addNewUser() {

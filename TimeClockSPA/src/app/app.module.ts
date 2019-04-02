@@ -11,7 +11,7 @@ import { DisplayTimeComponent } from './display-time/display-time.component';
 import { HomeComponent } from './home/home.component';
 import { ClockService } from '_services/clock.service';
 import { routes } from '_services/routes.module';
-import { ButtonsComponent } from './buttons/buttons.component';
+import { ButtonsComponent, DialogTextComponent } from './buttons/buttons.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -35,7 +35,8 @@ import { TimestampService } from '_services/timestamp.service';
     HeaderComponent,
     FooterComponent,
     TimesheetComponent,
-    ViewCurrentlyComponent
+    ViewCurrentlyComponent,
+    DialogTextComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +57,9 @@ import { TimestampService } from '_services/timestamp.service';
   ],
   bootstrap: [
     AppComponent
+  ],
+  entryComponents: [
+    DialogTextComponent
   ]
 })
 export class AppModule { }

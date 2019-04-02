@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material';
 
 import { TimestampService } from '_services/timestamp.service';
-import { Subscription } from 'rxjs';
-
 
 @Component({
   selector: 'app-buttons',
@@ -16,10 +16,27 @@ export class ButtonsComponent implements OnInit, OnDestroy {
   getTimestampSubscription: Subscription;
 
   constructor(private tsService: TimestampService,
-              private router: Router) { }
+              private router: Router,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.getTimestampSubscription = this.tsService.getTimestamp();
+    // Find a way to initialize first time users. Right now, empty database returns null. Maybe when new user
+    // registers, initialize database with empty strings.
+  }
+
+  openDialog() {
+    let dialogRef = this.dialog.open(DialogTextComponent);
+    dialogRef.afterClosed().subscribe(
+      (result) => {
+        this.clockIn();
+        console.log(result);
+      }
+    )
+    /*
+    Bug fix: Selecting yes or no does nothing, will send data when clicked outside the dialog box, closing it.
+
+    Will later add confirmation to tell user that they have clocked in/out with time info given.
+     */
   }
 
   clockIn() {
@@ -35,10 +52,17 @@ export class ButtonsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.clockInSubscription.unsubscribe();
-    this.clockOutSubscription.unsubscribe();
-    this.getTimestampSubscription.unsubscribe();
+    // this.clockInSubscription.unsubscribe();
+    // this.clockOutSubscription.unsubscribe();
+    // this.getTimestampSubscription.unsubscribe();
   }
 }
 
+@Component({
+  selector: 'app-dialog-text',
+  templateUrl: './dialog-text.component.html'
+})
+export class DialogTextComponent {
+  constructor() {}
+}
 

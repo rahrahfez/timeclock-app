@@ -20,13 +20,24 @@ export class TimestampService {
     private createTimestampWhenClockIn(): Timestamp {
         let date = this.clockService.getCurrentDate();
         let time = this.clockService.getCurrentTime();
-        return { 'date': date, 'clockIn': time };
+        let previousDateAndTime = this.timestamps.find(ind => ind.date === date);
+        if (previousDateAndTime) {
+            this.timestamps.pop();
+            return { 'date': date, 'time': {'clockIn': time }};
+        } else {
+            return { 'date': date, 'time': {'clockIn': time }};
+        }
     }
 
     private createTimestampWhenClockOut(): Timestamp {
         let date = this.clockService.getCurrentDate();
         let time = this.clockService.getCurrentTime();
-        return { 'date': date, 'clockOut': time };
+        let previousDateAndTime = this.timestamps.find(ind => ind.date === date);
+        this.timestamps.pop();
+        return { 'date': previousDateAndTime.date, 
+            'time': {
+                'clockIn': previousDateAndTime.time.clockIn,
+                'clockOut': time }};
     }
 
     setTimestamp(timestamps: Timestamp[]): void {

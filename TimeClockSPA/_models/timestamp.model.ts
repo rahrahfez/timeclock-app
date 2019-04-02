@@ -1,6 +1,5 @@
 export interface Timestamp {
     date: string,
-    clockIn?: string,
-    clockOut?: string
+    time: { clockIn: string, clockOut?: string }
 }
 

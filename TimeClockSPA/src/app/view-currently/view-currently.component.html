@@ -1,3 +1,11 @@
-<p>
-  view-currently works!
-</p>
+<ng-container *ngIf="!isHome()">
+  <span><i class="material-icons" id="back-arrow" (click)="backToHome()">
+    arrow_back
+    </i></span>
+</ng-container>
+<span class="fill-empty-space"></span>
+<div id="current-status">
+  <span>You are currently: {{ status === true ? 'clocked in.' : 'clocked out.'}}</span>
+</div>
+
+<router-outlet></router-outlet>

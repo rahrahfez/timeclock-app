@@ -1,0 +1,13 @@
+#current-status {
+    text-align: center;
+}
+
+#back-arrow {
+    margin-left: 50px;
+    cursor: pointer;
+    font-size: 48px;
+}
+
+.fill-empty-space {
+    flex: 1 1 auto;
+}

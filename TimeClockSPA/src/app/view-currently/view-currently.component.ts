@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-currently',
@@ -6,10 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-currently.component.css']
 })
 export class ViewCurrentlyComponent implements OnInit {
+  status = false;
+  isOnHomepage = true;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
+  }
+
+  isHome() {
+    if (this.router.url === '/timesheet') {
+      this.isOnHomepage = false;
+    }
+    return this.isOnHomepage;
+  }
+
+  backToHome() {
+    this.isOnHomepage = true;
+    this.router.navigate(['/home']);
   }
 
 }
