@@ -18,6 +18,12 @@ export class TimestampService {
                 private db: DataStorageService) {}
 
     private createTimestampWhenClockIn(): Timestamp {
+        /**
+         * Gets current date/time, if current date matches previous date within array,
+         * replace previous time with current time.
+         * 
+         * TODO: move getCurrentDate() and getCurrentTime() into own function?
+         */
         let date = this.clockService.getCurrentDate();
         let time = this.clockService.getCurrentTime();
         let previousDateAndTime = this.timestamps.find(ind => ind.date === date);
@@ -71,5 +77,4 @@ export class TimestampService {
                 err => console.log(err)
             )
     }
-
 }

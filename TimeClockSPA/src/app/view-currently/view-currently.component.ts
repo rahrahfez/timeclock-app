@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-currently',
@@ -10,14 +10,13 @@ export class ViewCurrentlyComponent implements OnInit {
   status = false;
   isOnHomepage = true;
 
-  constructor(private route: ActivatedRoute,
-              private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   isHome() {
-    if (this.router.url === '/timesheet') {
+    if (this.router.url === '/home/timesheet') {
       this.isOnHomepage = false;
     }
     return this.isOnHomepage;

@@ -1,19 +1,22 @@
 <div id="navbar">
-    <mat-toolbar color="accent">
-        <span>Timeclock-App</span>
-        <span class="fill-empty-space"></span>
+    <mat-toolbar color="primary">
+        <ng-template [ngIf]="!authService.isAuthenticated()">
+            <span>Timeclock-App</span>
+        </ng-template>
         
-        <ng-template [ngIf]="authService.isAuthenticated()">
-            <span id="welcome-tag">Welcome {{ authService.getCurrentUser() }}</span>
+         <ng-template [ngIf]="authService.isAuthenticated()">
             <span>
-                <button mat-menu-icon mat-stroked-button [matMenuTriggerFor]="appMenu">
-                    <i id="settings-icon" class="material-icons">settings</i>
-                </button>       
-                <mat-menu #appMenu="matMenu">
-                    <!-- <button mat-menu-item>Edit Profile</button> -->
-                    <button mat-menu-item (click)="signOut()">Sign Out</button>
-                </mat-menu>
+                    <button mat-menu-icon mat-stroked-button [matMenuTriggerFor]="appMenu">
+                        <i id="settings-icon" class="material-icons">settings</i>
+                    </button>       
+                    <mat-menu #appMenu="matMenu">
+                        <!-- <button mat-menu-item>Edit Profile</button> -->
+                        <button mat-menu-item (click)="signOut()">Sign Out</button>
+                    </mat-menu>
             </span>
+            <span class="fill-empty-space"></span>
+            <span id="welcome-tag">Welcome {{ authService.getCurrentUser() }}</span>
+            
         </ng-template>
     </mat-toolbar>
 </div>

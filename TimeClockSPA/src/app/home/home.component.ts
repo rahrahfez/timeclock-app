@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TimestampService } from '_services/timestamp.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private timeService: TimestampService) { }
 
   ngOnInit() {
-    
+    this.timeService.getTimestamp();
   }
 }

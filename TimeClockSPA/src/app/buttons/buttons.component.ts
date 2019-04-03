@@ -1,23 +1,24 @@
-import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { MatDialog } from '@angular/material';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog, MatDialogRef, MatSnackBar } from '@angular/material';
 
 import { TimestampService } from '_services/timestamp.service';
+import { ClockService } from '_services/clock.service';
 
 @Component({
   selector: 'app-buttons',
   templateUrl: './buttons.component.html',
   styleUrls: ['./buttons.component.css']
 })
-export class ButtonsComponent implements OnInit, OnDestroy {
-  clockInSubscription: Subscription;
-  clockOutSubscription: Subscription;
-  getTimestampSubscription: Subscription;
+export class ButtonsComponent implements OnInit {
+  @Output() clockInClicked = new EventEmitter;
 
   constructor(private tsService: TimestampService,
               private router: Router,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private route: ActivatedRoute,
+              private snackBar: MatSnackBar,
+              private clockService: ClockService) { }
 
   ngOnInit() {
     // Find a way to initialize first time users. Right now, empty database returns null. Maybe when new user
@@ -26,6 +27,7 @@ export class ButtonsComponent implements OnInit, OnDestroy {
 
   openDialog() {
     let dialogRef = this.dialog.open(DialogTextComponent);
+
     dialogRef.afterClosed().subscribe(
       (result) => {
         this.clockIn();
@@ -40,22 +42,21 @@ export class ButtonsComponent implements OnInit, OnDestroy {
   }
 
   clockIn() {
-    this.clockInSubscription = this.tsService.addClockInToTimestamps();
+    let currentTime = this.clockService.getCurrentTime();
+    this.snackBar.open('You have successfully clocked in at ' + currentTime, '', { duration: 3000 });
+    this.tsService.addClockInToTimestamps();
   }
 
   clockOut() {
-    this.clockOutSubscription = this.tsService.addClockOutToTimestamps();
+    let currentTime = this.clockService.getCurrentTime();
+    this.snackBar.open('You have successfully clocked out at ' + currentTime, '', { duration: 3000 });
+    this.tsService.addClockOutToTimestamps();
   }
 
   onViewTimesheet() {
-    this.router.navigate(['/timesheet']);
+    this.router.navigate(['/home/timesheet'], { relativeTo: this.route });
   }
 
-  ngOnDestroy() {
-    // this.clockInSubscription.unsubscribe();
-    // this.clockOutSubscription.unsubscribe();
-    // this.getTimestampSubscription.unsubscribe();
-  }
 }
 
 @Component({
@@ -63,6 +64,11 @@ export class ButtonsComponent implements OnInit, OnDestroy {
   templateUrl: './dialog-text.component.html'
 })
 export class DialogTextComponent {
-  constructor() {}
+
+  constructor(public dialogRef: MatDialogRef<DialogTextComponent>) {}
+
+  onNoClick() {
+    this.dialogRef.close();
+  }
 }
 
