@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs';
 
 import { DataStorageService } from '_services/data-storage.service';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { Timestamp } from '_models/timestamp.model';
 
 @Component({
@@ -11,7 +11,9 @@ import { Timestamp } from '_models/timestamp.model';
   templateUrl: './timesheet.component.html',
   styleUrls: ['./timesheet.component.css']
 })
-export class TimesheetComponent implements OnInit {
+export class TimesheetComponent implements OnInit, AfterViewInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   displayedColumns = ['date', 'clockIn', 'clockOut'];
   // dataSource = new TimestampDataSource(this.db);
 
@@ -28,7 +30,12 @@ export class TimesheetComponent implements OnInit {
           console.log(data);
         })
   }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 }
+
 
 export class TimestampDataSource extends DataSource<any> {
   constructor(private db: DataStorageService) {

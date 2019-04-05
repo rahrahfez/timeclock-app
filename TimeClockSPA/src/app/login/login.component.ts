@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.authService.signinUser(email, pw);
   
     setTimeout(() => {
-      console.log(this.authService.getCurrentUserProfile()),
+      // console.log(this.authService.getCurrentUserProfile()),
       this.router.navigate(['/home'], { relativeTo: this.route })
     }, 1000);
   }

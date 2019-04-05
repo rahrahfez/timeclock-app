@@ -22,28 +22,60 @@ export class TimestampService {
          * Gets current date/time, if current date matches previous date within array,
          * replace previous time with current time.
          * 
-         * TODO: move getCurrentDate() and getCurrentTime() into own function?
+         * Question: Move getCurrentDate() and getCurrentTime() into own function?
          */
         let date = this.clockService.getCurrentDate();
         let time = this.clockService.getCurrentTime();
-        let previousDateAndTime = this.timestamps.find(ind => ind.date === date);
+
+        let previousDateAndTime = this.timestamps
+            .find(
+                ind => ind.date === date);
+
         if (previousDateAndTime) {
+            // Replaces old time with new time.
+            // Will later make it so user cannot input new time if previous time exits.
             this.timestamps.pop();
-            return { 'date': date, 'time': {'clockIn': time }};
+            return { 
+                'date': date, 
+                'time': {
+                    'clockIn': time }};
         } else {
-            return { 'date': date, 'time': {'clockIn': time }};
+            return { 
+                'date': date, 
+                'time': {
+                    'clockIn': time }};
         }
     }
 
     private createTimestampWhenClockOut(): Timestamp {
+        /**
+         * First checks to see if any previous entry of clock in is present.
+         * If present, remove previous entry, append new time to previous entry, 
+         * return new timestamp.
+         */
         let date = this.clockService.getCurrentDate();
         let time = this.clockService.getCurrentTime();
-        let previousDateAndTime = this.timestamps.find(ind => ind.date === date);
-        this.timestamps.pop();
-        return { 'date': previousDateAndTime.date, 
-            'time': {
-                'clockIn': previousDateAndTime.time.clockIn,
-                'clockOut': time }};
+
+        let previousDateAndTime = this.timestamps
+            .find(
+                ind => ind.date === date);
+
+        if (previousDateAndTime === undefined) {
+            // Returns empty string for clockin if no previous entry found.
+            // Question: How will I add clock in time later if I clocked out before clocking in?
+            return { 
+                'date': date, 
+                'time': { 
+                    'clockIn': '', 'clockOut': time }}
+        } else {
+            this.timestamps.pop(); 
+
+            return { 
+                'date': previousDateAndTime.date, 
+                'time': {
+                    'clockIn': previousDateAndTime.time.clockIn,
+                    'clockOut': time }};
+        }       
     }
 
     setTimestamp(timestamps: Timestamp[]): void {

@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatDialog, MatDialogRef, MatSnackBar } from '@angular/material';
+import { MatDialogRef, MatSnackBar } from '@angular/material';
 
 import { TimestampService } from '_services/timestamp.service';
 import { ClockService } from '_services/clock.service';
@@ -15,7 +15,6 @@ export class ButtonsComponent implements OnInit {
 
   constructor(private tsService: TimestampService,
               private router: Router,
-              private dialog: MatDialog,
               private route: ActivatedRoute,
               private snackBar: MatSnackBar,
               private clockService: ClockService) { }
@@ -25,21 +24,20 @@ export class ButtonsComponent implements OnInit {
     // registers, initialize database with empty strings.
   }
 
-  openDialog() {
-    let dialogRef = this.dialog.open(DialogTextComponent);
+  // openDialog() {
+  //   let dialogRef = this.dialog.open(DialogTextComponent);
 
-    dialogRef.afterClosed().subscribe(
-      (result) => {
-        this.clockIn();
-        console.log(result);
-      }
-    )
-    /*
-    Bug fix: Selecting yes or no does nothing, will send data when clicked outside the dialog box, closing it.
+  //   dialogRef.afterClosed().subscribe(
+  //     () => {
+  //       this.clockIn();
+  //     }
+  //   )
+  //   /*
+  //   Bug fix: Selecting yes or no does nothing, will send data when clicked outside the dialog box, closing it.
 
-    Will later add confirmation to tell user that they have clocked in/out with time info given.
-     */
-  }
+  //   Will later add confirmation to tell user that they have clocked in/out with time info given.
+  //    */
+  // }
 
   clockIn() {
     let currentTime = this.clockService.getCurrentTime();
